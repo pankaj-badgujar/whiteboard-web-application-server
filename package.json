@@ -1,0 +1,14 @@
+{
+  "name": "wbdv-sf19-pankajbadgujar-server-node",
+  "version": "1.0.0",
+  "description": "webdev project with node.js as the server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
