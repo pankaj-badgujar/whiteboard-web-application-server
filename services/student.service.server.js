@@ -1,14 +1,13 @@
 module.exports = function (app) {
-    let students = require('../data/students');
+
+    const studentDAO = require('../daos/student.dao.server');
 
     function findAllStudents(req,res) {
-        res.json(students);
+        res.json(studentDAO.findAllStudents());
     }
 
     function findStudentById(req,res) {
-        res.json(
-            students.find(student => student._id === req.params['sid'])
-        )
+        res.json(studentDAO.findStudentById(req.params['sid']))
     }
 
     app.get("/api/student",findAllStudents);

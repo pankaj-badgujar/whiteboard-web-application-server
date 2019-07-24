@@ -1,31 +1,26 @@
 module.exports = function (app) {
 
-    let answers = require('../data/answers');
-    function findAllAnswers(req, res){
-        res.json(answers)
+    const answerDAO = require('../daos/answer.dao.server');
+
+    function findAllAnswers(req, res) {
+        res.json(answerDAO.findAllAnswers())
     }
 
     function findAnswerById(req, res) {
-        res.json(
-            answers.find(answer => answer._id === req.params['aid'])
-        )
+        res.json(answerDAO.findAnswerById(req.params['aid']))
     }
 
-    function findAnswersByQuestion(req , res) {
-        res.json(
-            answers.filter(answer => answer.question === req.params['qid'])
-        )
+    function findAnswersByQuestion(req, res) {
+        res.json(answerDAO.findAnswersByQuestion(req.params['qid']));
     }
 
     function findAnswersByStudent(req, res) {
-        res.json(
-            answers.filter(answer=> answer.student === req.params['sid'])
-        )
+        res.json(answerDAO.findAnswersByStudent(req.params['sid']));
     }
 
 
-    app.get("/api/answer",findAllAnswers);
-    app.get("/api/answer/:aid",findAnswerById);
-    app.get("/api/question/:qid/answer",findAnswersByQuestion);
-    app.get("/api/student/:sid/answer",findAnswersByStudent);
+    app.get("/api/answer", findAllAnswers);
+    app.get("/api/answer/:aid", findAnswerById);
+    app.get("/api/question/:qid/answer", findAnswersByQuestion);
+    app.get("/api/student/:sid/answer", findAnswersByStudent);
 };

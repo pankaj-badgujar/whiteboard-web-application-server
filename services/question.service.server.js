@@ -1,14 +1,13 @@
 module.exports = function (app) {
-let questions = require('../data/questions');
+
+    const questionDAO = require('../daos/question.dao.server');
 
     function findAllQuestions(req,res) {
-        res.json(questions)
+        res.json(questionDAO.findAllQuestions())
     }
 
     function findQuestionById(req,res) {
-        res.json(
-            questions.find(question => question._id === req.params['qid'])
-        )
+        res.json(questionDAO.findQuestionById(req.params['qid']))
     }
 
     app.get("/api/question",findAllQuestions);
