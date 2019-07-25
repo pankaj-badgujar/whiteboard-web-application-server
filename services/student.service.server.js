@@ -19,7 +19,7 @@ module.exports = function (app) {
     }
 
     function updateStudent(req,res){
-        res.json(studentDAO.updateStudent(req.body))
+        res.json(studentDAO.updateStudent(req.params['sid'], req.body))
     }
 
     app.get("/api/student",findAllStudents);

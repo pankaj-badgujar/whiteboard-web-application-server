@@ -17,17 +17,10 @@ function deleteStudent(studentId){
     students = students.filter(student => student._id !== studentId);
 }
 
-function updateStudent(student){
-    let studentToBeUpdated = this.findStudentById(student._id);
-
-    studentToBeUpdated.firstName = student.firstName;
-    studentToBeUpdated.lastName = student.lastName;
-    studentToBeUpdated.username = student.username;
-    studentToBeUpdated.password = student.password;
-    studentToBeUpdated.gradYear = student.gradYear;
-    studentToBeUpdated.scholarship = student.scholarship;
-
-    return studentToBeUpdated;
+function updateStudent(studentId, student){
+    let index = students.indexOf(student);
+    students.splice(index,1,student);
+    return student;
 }
 
 module.exports = {
