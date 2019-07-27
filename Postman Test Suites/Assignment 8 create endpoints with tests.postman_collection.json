@@ -1,0 +1,674 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Assignment 8 create endpoints with tests",
+		"_postman_id": "69c99de8-00fb-c394-788e-aa40a62f2e81",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findAllStudents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are 2 students\"] = jsonData.length === 2;",
+							"",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"First student is alice\"] = jsonData[0].firstName === 'Alice';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create student: 345 Charlie Brown",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New student added and there are now total of 3 students\"] = jsonData.length === 3;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last student's name is charlie\"] = jsonData[jsonData.length-1].firstName === 'Charlie';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"_id\": \"345\",\n        \"firstName\": \"Charlie\",\n        \"lastName\": \"Brown\",\n        \"username\": \"charlie\",\n        \"password\": \"charlie\",\n        \"gradYear\": 2021,\n        \"scholarship\": 17000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create student 456 Daniel Craig",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New student added and there are now total of 4 students\"] = jsonData.length === 4;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last student's name is daniel\"] = jsonData[jsonData.length-1].firstName === 'Daniel';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"_id\": \"456\",\n        \"firstName\": \"Daniel\",\n        \"lastName\": \"Craig\",\n        \"username\": \"dan\",\n        \"password\": \"dan\",\n        \"gradYear\": 2022,\n        \"scholarship\": 18000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "findAllQuestions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are 4 questions\"] = jsonData.length === 4;",
+							"",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"First question contains the string schema valid\"] = jsonData[0].question.has(\"schema valid\")",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question: 111 JSON stands for JavaScript Object Notation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New question added and now there are total of 5 questions\"] = jsonData.length === 5;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last question has 'JSON stands' \"] = jsonData[jsonData.length-1].question.has('JSON stands');",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 111 has 10 points\"] = jsonData[jsonData.length-1].points === 10;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 111 is of type True False\"] = jsonData[jsonData.length-1].type === \"TRUE_FALSE\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer for question 111 is true\"] = jsonData[jsonData.length-1].isTrue === true;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"111\",\n        \"question\": \"JSON stands for JavaScript Object Notation\",\n        \"points\": 10,\n        \"type\": \"TRUE_FALSE\",\n        \"isTrue\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question: 222 CSS stands for Cascading Style Sheets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New question added and length is now 6\"] = jsonData.length === 6;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last question has 'CSS stands' \"] = jsonData[jsonData.length-1].question.has('CSS stands');",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 222 has 10 points\"] = jsonData[jsonData.length-1].points === 10;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 222 is of type True False\"] = jsonData[jsonData.length-1].type === \"TRUE_FALSE\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer for question 222 is true\"] = jsonData[jsonData.length-1].isTrue === true;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"222\",\n        \"question\": \"CSS stands for Cascading Style Sheets\",\n        \"points\": 10,\n        \"type\": \"TRUE_FALSE\",\n        \"isTrue\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create questions: 333 What does JSON stand for",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New question added and length is now 7\"] = jsonData.length === 7;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last question has 'JSON stand' \"] = jsonData[jsonData.length-1].question.has('JSON stand');",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 333 has 10 points\"] = jsonData[jsonData.length-1].points === 10;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 333 is of type MULTIPLE_CHOICE\"] = jsonData[jsonData.length-1].type === \"MULTIPLE_CHOICE\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer for question 333 is choice 2\"] = jsonData[jsonData.length-1].correct === 2;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"333\",\n        \"question\": \"What does JSON stand for?\",\n        \"points\": 10,\n        \"type\": \"MULTIPLE_CHOICE\",\n        \"choices\": [\n            \"Java Object Notation\",\n            \"JavaScript Operation Notation\",\n            \"JavaScript Object Notation\",\n            \"JSON Object Notation\"\n        ],\n        \"correct\": 2\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question: 444 What does CSS stand for",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New question added and length is now 8\"] = jsonData.length === 8;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last question has 'CSS stand' \"] = jsonData[jsonData.length-1].question.has('CSS stand');",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 444 has 10 points\"] = jsonData[jsonData.length-1].points === 10;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 444 is of type MULTIPLE_CHOICE\"] = jsonData[jsonData.length-1].type === \"MULTIPLE_CHOICE\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer for question 444 is choice 0\"] = jsonData[jsonData.length-1].correct === 0;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"444\",\n        \"question\": \"What does CSS stand for?\",\n        \"points\": 10,\n        \"type\": \"MULTIPLE_CHOICE\",\n        \"choices\": [\n            \"Cascading Style Sheets\",\n            \"CSS Style Sheets\",\n            \"Cascading Style Scripts\",\n            \"Cascading Script Styles\"\n        ],\n        \"correct\": 0\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find all answers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are total of 8 answers\"] = jsonData.length === 8;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 111 Charlie JSON stands for JavaScript Object Notation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 9 answers\"] = jsonData.length === 9;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '345' \"] = jsonData[jsonData.length-1].student === \"345\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '111' \"] = jsonData[jsonData.length-1].question === \"111\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is true  \"] = jsonData[jsonData.length-1].trueFalseAnswer === true ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/111/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"111\",\n        \"trueFalseAnswer\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 222 Charlie CSS stands for Cascading Style Sheets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 10 answers\"] = jsonData.length === 10;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '345' \"] = jsonData[jsonData.length-1].student === \"345\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '222' \"] = jsonData[jsonData.length-1].question === \"222\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is false\"] = jsonData[jsonData.length-1].trueFalseAnswer === false ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/222/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"222\",\n        \"trueFalseAnswer\": false\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 333 Charlie What does JSON stand for",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 11 answers\"] = jsonData.length === 11;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '345' \"] = jsonData[jsonData.length-1].student === \"345\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '333' \"] = jsonData[jsonData.length-1].question === \"333\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is choice 1\"] = jsonData[jsonData.length-1].multipleChoiceAnswer === 1;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/333/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"333\",\n        \"multipleChoiceAnswer\": 1\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 444 Charlie What does CSS stand for",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 12 answers\"] = jsonData.length === 12;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '345' \"] = jsonData[jsonData.length-1].student === \"345\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '444' \"] = jsonData[jsonData.length-1].question === \"444\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is choice 2\"] = jsonData[jsonData.length-1].multipleChoiceAnswer === 2;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/444/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"444\",\n        \"multipleChoiceAnswer\": 2\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 555 Dan JSON stands for JavaScript Object Notation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 13 answers\"] = jsonData.length === 13;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '456' \"] = jsonData[jsonData.length-1].student === \"456\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '111' \"] = jsonData[jsonData.length-1].question === \"111\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is false\"] = jsonData[jsonData.length-1].trueFalseAnswer === false;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/456/question/111/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"555\",\n        \"trueFalseAnswer\": false\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 777 Dan CSS stands for Cascading Style Sheets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 14 answers\"] = jsonData.length === 14;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '456' \"] = jsonData[jsonData.length-1].student === \"456\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '222' \"] = jsonData[jsonData.length-1].question === \"222\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is true\"] = jsonData[jsonData.length-1].trueFalseAnswer === true ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/456/question/222/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"777\",\n        \"trueFalseAnswer\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 888 Dan What does JSON stand for",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 15 answers\"] = jsonData.length === 15;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '456' \"] = jsonData[jsonData.length-1].student === \"456\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '333' \"] = jsonData[jsonData.length-1].question === \"333\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is choice 3\"] = jsonData[jsonData.length-1].multipleChoiceAnswer === 3;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/456/question/333/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"888\",\n        \"multipleChoiceAnswer\": 3\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer: 999 Dan What does CSS stand for",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 16 answers\"] = jsonData.length === 16;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '456' \"] = jsonData[jsonData.length-1].student === \"456\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '444' \"] = jsonData[jsonData.length-1].question === \"444\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is choice 4\"] = jsonData[jsonData.length-1].multipleChoiceAnswer === 4;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/456/question/444/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"999\",\n        \"multipleChoiceAnswer\": 4\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

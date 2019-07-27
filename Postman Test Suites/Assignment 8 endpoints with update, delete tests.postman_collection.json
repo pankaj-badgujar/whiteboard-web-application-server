@@ -1,0 +1,474 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Assignment 8 endpoints with update, delete tests",
+		"_postman_id": "996fb49b-9dc0-c38c-6607-08fbb2300ee8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findAllStudents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are 2 students\"] = jsonData.length === 2;",
+							"",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"First student is alice\"] = jsonData[0].firstName === 'Alice';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create student: 345 Charlie Brown",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New student added and there are now total of 3 students\"] = jsonData.length === 3;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last student's name is charlie\"] = jsonData[jsonData.length-1].firstName === 'Charlie';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"_id\": \"345\",\n        \"firstName\": \"Charlie\",\n        \"lastName\": \"Brown\",\n        \"username\": \"charlie\",\n        \"password\": \"charlie\",\n        \"gradYear\": 2021,\n        \"scholarship\": 17000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update charlie's lastname to glover",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Charlie's lastName updated to glover\"] = jsonData.lastName === 'glover';",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Charlie's gradYear updated to 2022\"] = jsonData.gradYear === 2022;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Charlie's scholarship updated to 10000\"] = jsonData.scholarship === 10000;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"345\",\n        \"firstName\": \"Charlie\",\n        \"lastName\": \"glover\",\n        \"username\": \"charlie\",\n        \"password\": \"glo\",\n        \"gradYear\": 2022,\n        \"scholarship\": 10000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete charlie",
+			"request": {
+				"url": "http://localhost:3000/api/student/345",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find student charlie by ID to check he is deleted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"No student with the name 'Charlie'\"] = !responseBody.has(\"Charlie\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "findAllQuestions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are 4 questions\"] = jsonData.length === 4;",
+							"",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"First question contains the string schema valid\"] = jsonData[0].question.has(\"schema valid\")",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question: 111 JSON stands for JavaScript Object Notation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New question added and length is now 5\"] = jsonData.length === 5;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last question has 'JSON stands' \"] = jsonData[jsonData.length-1].question.has('JSON stands');"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"111\",\n        \"question\": \"JSON stands for JavaScript Object Notation\",\n        \"points\": 10,\n        \"type\": \"TRUE_FALSE\",\n        \"isTrue\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update question 111",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 111 is changed to 'What does JSON stand for?' \"] = ",
+							"    jsonData.question.has('What does JSON stand');",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 111 type is changed to 'MULTIPLE_CHOICE' \"] = jsonData.type === 'MULTIPLE_CHOICE';",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/111",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"111\",\n        \"question\": \"What does JSON stand for?\",\n        \"points\": 10,\n        \"type\": \"MULTIPLE_CHOICE\",\n        \"choices\" : [\"Java Object Notation\",\"JavaScript Operation Notation\",\"JavaScript Object Notation\",\"JSON Object Notation\"],\n        \"correct\": 2\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete question 111",
+			"request": {
+				"url": "http://localhost:3000/api/question/111",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find question by ID to check qstn 111  is deleted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No question which has strings 'JSON stand '\"] = !responseBody.has(\"JSON stand\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/111",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find all answers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are 8 answers\"] = jsonData.length === 8;",
+							"",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"First answer's id is 123\"] = jsonData[0]._id === \"123\"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create answer 111 by student for question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"New answer added and there are now a total of 9 answers\"] = jsonData.length === 9;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered by student '345' \"] = jsonData[jsonData.length-1].student === \"345\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer has been answered for question '111' \"] = jsonData[jsonData.length-1].question === \"111\";",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Last answer is true\"] = jsonData[jsonData.length-1].trueFalseAnswer === true ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/111/answer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"111\",\n        \"trueFalseAnswer\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find answer 111 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"answer has id 111\"] = jsonData._id === \"111\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/answer/111",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find Answers By Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are total of 4 answers by student with id 123\"] = jsonData.length === 4;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/123/answer/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find Answer for question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There are a total of 2 answers for question with id 321\"] = jsonData.length === 2;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/321/answer/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find answer by student for question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There is 1 answer by student with id 345 for question with id 111\"] = jsonData.length === 1;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer for id 111 is true\"] = jsonData[0].trueFalseAnswer === true;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/111/answer/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find answer for question by student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"There is 1 answer by student with id 345 for question with id 111\"] = jsonData.length === 1;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer for id 111 is true\"] = jsonData[0].trueFalseAnswer === true;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/111/student/345/answer/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
