@@ -1,32 +1,32 @@
-let students = require('../data/students');
+const studentModel = require('../models/student.model.server');
+
+function createStudent(student) {
+    return studentModel.create(student);
+}
 
 function findAllStudents() {
-    return students;
+    return studentModel.find();
 }
 
-function findStudentById(studentId) {
-    return students.find(student => student._id === studentId)
+function findStudentById(userId) {
+    return studentModel.findById(userId);
 }
 
-function createStudent(student){
-    students.push(student);
-    return students;
+function deleteStudent(studentId) {
+    return studentModel.deleteOne({_id: studentId})
 }
 
-function deleteStudent(studentId){
-    students = students.filter(student => student._id !== studentId);
-}
-
-function updateStudent(studentId, student){
-    let index = students.indexOf(student);
-    students.splice(index,1,student);
-    return student;
+function updateStudent(studentId, student) {
+    return studentModel.update({_id: studentId}, {
+        $set: student
+    })
 }
 
 module.exports = {
+    createStudent,
     findAllStudents,
     findStudentById,
-    createStudent,
     deleteStudent,
     updateStudent
 };
+
