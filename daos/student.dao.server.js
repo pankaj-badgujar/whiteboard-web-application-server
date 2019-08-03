@@ -17,7 +17,7 @@ function deleteStudent(studentId) {
 }
 
 function updateStudent(studentId, student) {
-    return studentModel.update({_id: studentId}, {
+    return studentModel.updateOne({_id: studentId}, {
         $set: student
     })
 }
