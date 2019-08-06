@@ -21,12 +21,16 @@ function updateStudent(studentId, student) {
         $set: student
     })
 }
+function truncateDatabase(){
+    return studentModel.deleteMany({});
+}
 
 module.exports = {
     createStudent,
     findAllStudents,
     findStudentById,
     deleteStudent,
-    updateStudent
+    updateStudent,
+    truncateDatabase
 };
 

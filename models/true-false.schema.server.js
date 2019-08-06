@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let trueFalseSchema = mongoose.Schema({
+const trueFalseSchema = mongoose.Schema({
     isTrue: Boolean
 });
 

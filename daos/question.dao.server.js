@@ -19,7 +19,11 @@ function updateQuestion(questionId,question){
 }
 
 function deleteQuestion(questionId){
-    return questionModel.remove({_id: questionId});
+    return questionModel.deleteOne({_id: questionId});
+}
+
+function truncateDatabase(){
+    return questionModel.deleteMany({});
 }
 
 module.exports = {
@@ -27,5 +31,6 @@ module.exports = {
     findQuestionById,
     createQuestion,
     updateQuestion,
-    deleteQuestion
+    deleteQuestion,
+    truncateDatabase
 };

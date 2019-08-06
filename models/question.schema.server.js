@@ -9,6 +9,6 @@ module.exports = mongoose.Schema ({
     points : Number,
     questionType : {type: String, enum: ["MULTIPLE_CHOICE", "TRUE_FALSE"]},
     multipleChoice : MultipleChoiceSchema,
-    trueFalse : TrueFalseSchema
+    trueFalse :  TrueFalseSchema
 }, { collection : 'questions' });
 

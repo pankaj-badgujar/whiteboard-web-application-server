@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let multipleChoiceSchema = mongoose.Schema({
+const multipleChoiceSchema = mongoose.Schema({
     choices: String,
     correct: Number
 });

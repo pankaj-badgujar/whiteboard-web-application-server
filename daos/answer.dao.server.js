@@ -26,11 +26,16 @@ function findAnswerByStudentForQuestion(studentId, questionId) {
     return answerModel.find({$and : [{question: questionId, student: studentId}]})
 }
 
+function truncateDatabase(){
+    return answerModel.deleteMany({})
+}
+
 module.exports = {
     findAllAnswers,
     findAnswerById,
     createAnswerByStudentForQuestion,
     findAnswerByStudentForQuestion,
     findAnswersByStudent,
-    findAnswersByQuestion
+    findAnswersByQuestion,
+    truncateDatabase
 };
