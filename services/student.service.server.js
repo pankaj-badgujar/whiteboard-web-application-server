@@ -10,7 +10,7 @@ module.exports = function (app) {
     function createStudent(req, res) {
         studentDAO
             .createStudent(req.body)
-            .then(students => res.send(students))
+            .then(student => res.send(student))
     }
 
     function findStudentById(req, res) {

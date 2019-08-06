@@ -1,0 +1,473 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Assignment 9 Test Suite",
+		"_postman_id": "d0e2c430-0345-0296-15c5-9f8dfc2bdff4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Student 123 Alice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Alice is added\"] = jsonData.firstName === \"Alice\" ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"_id\": \"123\",\n        \"firstName\": \"Alice\",\n        \"lastName\": \"Wonderland\",\n        \"username\": \"alice\",\n        \"password\": \"alice\",\n        \"gradYear\": 2020,\n        \"scholarship\": 15000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Student 234 Bob",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Bob is added\"] = jsonData.firstName === \"Bob\" ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"_id\": \"234\",\n        \"firstName\": \"Bob\",\n        \"lastName\": \"Hope\",\n        \"username\": \"bob\",\n        \"password\": \"bob\",\n        \"gradYear\": 2021,\n        \"scholarship\": 12000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question 321",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 321 is added\"] = jsonData._id === 321 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/questions/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"321\",\n        \"question\": \"Is the following schema valid?\",\n        \"points\": 10,\n        \"questionType\": \"TRUE_FALSE\",\n        \"trueFalse\": {\n        \"isTrue\": false\t\n        }\n        \n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question 432",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 432 is added\"] = jsonData._id === 432 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/questions/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"432\",\n        \"question\": \"DAO stands for Dynamic Access Object\",\n        \"points\": 10,\n        \"questionType\": \"TRUE_FALSE\",\n        \"trueFalse\": {\n        \"isTrue\": false\t\n        }\n        \n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question 543",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 543 is added\"] = jsonData._id === 543 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/questions/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"543\",\n        \"question\": \"What does JPA stand for?\",\n        \"points\": 10,\n        \"questionType\": \"MULTIPLE_CHOICE\",\n        \"multipleChoice\" : {\n        \t\"choices\": \"Java Persistence API, Java Persisted Application, JavaScript Persistence API, JSON Persistent Associations\",\n        \t\"correct\" : 1\n        }\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create question 654",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Question 654 is added\"] = jsonData._id === 654;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/questions/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"654\",\n        \"question\": \"What does ORM stand for?\",\n        \"points\": 10,\n        \"questionType\": \"MULTIPLE_CHOICE\",\n        \"multipleChoice\" : {\n        \t\"choices\": \"Object Relational Model, Object Relative Markup, Object Reflexive Model, Object Relational Mapping\",\n        \t\"correct\" : 4\n        }\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 123",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 123 is added\"] = jsonData._id === 123 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/123/questions/321/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"123\",\n        \"trueFalseAnswer\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 234",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 234 is added\"] = jsonData._id === 234 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/123/questions/432/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"234\",\n        \"trueFalseAnswer\": false\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 345",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 345 is added\"] = jsonData._id === 345 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/123/questions/543/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"345\",\n         \"multipleChoiceAnswer\": 1\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 456",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 456 is added\"] = jsonData._id === 456 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/123/questions/654/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"456\",\n         \"multipleChoiceAnswer\": 2\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 567",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 567 is added\"] = jsonData._id === 567 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/234/questions/321/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"567\",\n        \"trueFalseAnswer\": false\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 678",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 678 is added\"] = jsonData._id === 678 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/234/questions/432/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"678\",\n        \"trueFalseAnswer\": true\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 789",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 789 is added\"] = jsonData._id === 789 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/234/questions/543/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"789\",\n         \"multipleChoiceAnswer\": 3\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create answer 890",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Answer 890 is added\"] = jsonData._id === 890 ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/students/234/questions/654/answers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": \"890\",\n         \"multipleChoiceAnswer\": 4\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

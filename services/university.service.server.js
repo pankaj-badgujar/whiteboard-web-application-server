@@ -2,11 +2,13 @@ module.exports = function (app) {
     let universityDao = require('../daos/university.dao.server');
 
     function truncateDatabase(req, res) {
-        res.send(universityDao.truncateDatabase());
+        universityDao.truncateDatabase();
+        res.send("Database Truncated");
     }
 
     function populateDatabase(req, res) {
-        res.send(universityDao.populateDatabase());
+        universityDao.populateDatabase();
+        res.send("Database populated with test data");
     }
 
     app.delete("/api/all", truncateDatabase);
