@@ -6,8 +6,12 @@ function truncateDatabase() {
 
     answerDao
         .truncateDatabase()
-        .then(status => {return questionDao.truncateDatabase()})
-        .then(status => {return studentDao.truncateDatabase()})
+        .then(status => {
+            return questionDao.truncateDatabase()
+        })
+        .then(status => {
+            return studentDao.truncateDatabase()
+        })
         .then({});
 }
 
@@ -56,40 +60,42 @@ let question321 = {
     "_id": 321,
     "question": "Is the following schema valid?",
     "points": 10,
-    "type": "TRUE_FALSE",
-    "isTrue": false
+    "questionType": "TRUE_FALSE",
+    "trueFalse": {
+        "isTrue": false
+    }
 };
 
 let question432 = {
-    "_id": 432,
-    "question": "DAO stands for Dynamic Access Object.",
+    "_id": "432",
+    "question": "DAO stands for Dynamic Access Object",
     "points": 10,
-    "type": "TRUE_FALSE",
-    "isTrue": false
+    "questionType": "TRUE_FALSE",
+    "trueFalse": {
+        "isTrue": false
+    }
 };
 
 let question543 = {
-    "_id": 543,
+    "_id": "543",
     "question": "What does JPA stand for?",
     "points": 10,
-    "type": "MULTIPLE_CHOICE",
-    "choices": "Java Persistence API," +
-        "Java Persisted Application," +
-        "JavaScript Persistence API," +
-        "JSON Persistent Associations",
-    "correct": 1
+    "questionType": "MULTIPLE_CHOICE",
+    "multipleChoice" : {
+        "choices": "Java Persistence API, Java Persisted Application, JavaScript Persistence API, JSON Persistent Associations",
+        "correct" : 1
+    }
 };
 
 let question654 = {
-    "_id": 654,
+    "_id": "654",
     "question": "What does ORM stand for?",
     "points": 10,
-    "type": "MULTIPLE_CHOICE",
-    "choices": "Object Relational Model," +
-        "Object Relative Markup," +
-        "Object Reflexive Model," +
-        "Object Relational Mapping",
-    "correct": 4
+    "questionType": "MULTIPLE_CHOICE",
+    "multipleChoice" : {
+        "choices": "Object Relational Model, Object Relative Markup, Object Reflexive Model, Object Relational Mapping",
+        "correct" : 4
+    }
 };
 
 let answer123 = {
