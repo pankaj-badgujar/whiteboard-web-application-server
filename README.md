@@ -1,3 +1,3 @@
-# wbdv-sf19-pankajBadgujar-server-node
-This repository is the project where node.js acts as the server.
+# whiteboard web application
+This repository is the server of a web application built in node.js
 It has implementations of REST api and its endpoints.
